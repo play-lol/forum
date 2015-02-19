@@ -1,0 +1,30 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                       controllers.Application.index
+#GET     /index2                 controllers.GroupController.index2
+
+GET     /group                  controllers.GroupCtrl.index
+GET     /group/new              controllers.GroupCtrl.new_
+POST    /group/create           controllers.GroupCtrl.create
+GET     /group/:id/edit         controllers.GroupCtrl.edit(id: Int)
+GET     /group/:id              controllers.GroupCtrl.show(id: Int)
+POST    /group/:id/delete       controllers.GroupCtrl.destroy(id: Int)
+POST    /group/:id/update       controllers.GroupCtrl.update(id: Int)
+#PUT     /group/:id              controllers.GroupController.update(id: Int)
+#DELETE  /group/:id              controllers.GroupController.destroy(id: Int)
+
+GET     /group/:gid/post/new          controllers.PostCtrl.new_(gid: Int)
+POST    /group/:gid/post/create       controllers.PostCtrl.create(gid: Int)
+GET     /group/:gid/post/:id/edit     controllers.PostCtrl.edit(gid: Int, id: Int)
+POST    /group/:gid/post/:id/delete   controllers.PostCtrl.destroy(gid: Int, id: Int)
+POST    /group/:gid/post/:id/update   controllers.PostCtrl.update(gid: Int, id: Int)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file           controllers.Assets.at(path="/public", file)
+# Versioned Assets
+GET     /vassets/*file          controllers.Assets.versioned(path="/public", file: Asset)
+# WebJars
+GET     /webjars/*file          controllers.WebJarAssets.at(file)

@@ -1,0 +1,12 @@
+@(groupForm: Form[models.Group])
+@import helper.inputText
+
+<div class="col-md-4 col-md-offset-4">
+@helper.form(action = routes.GroupCtrl.create) {
+    @inputText(groupForm("Title"), 'class -> "input-xxlarge")
+    @inputText(groupForm("Description"), 'class -> "input-xxlarge")
+    <div class="form-actions">
+        <input type="submit" value="create" class="btn btn-primary" />
+    </div>
+}
+</div>

@@ -1,0 +1,13 @@
+@(group: models.Group, postForm: Form[models.Post])
+@import helper.inputText
+
+<div class="col-md-4 col-md-offset-4">
+@helper.form(action = routes.PostCtrl.create(group.id)) {
+    <div class="form-group">
+        @inputText(postForm("content"), 'class -> "input-xxlarge")
+    </div>
+    <div class="form-actions">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+}
+</div>

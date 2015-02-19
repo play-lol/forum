@@ -1,0 +1,32 @@
+@(group: models.Group, posts: List[models.Post])
+
+<form id="form-group" visibility="hidden"></form>
+<div class="col-md-12">
+    <div class="group">
+        <a href="@routes.PostCtrl.new_(group.id)" class="btn btn-warning pull-right">New Post</a>
+        <a href="@routes.GroupCtrl.edit(group.id)" class="btn btn-primary pull-right">Edit</a>
+    </div>
+    <h2>@group.title</h2>
+    <p>@group.description</p>
+    
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>#</td>
+                <td>Content</td>
+            </tr>
+        </thead>
+        <tbody>
+        @for(post <- posts) {
+            <tr>
+                <td>#</td>
+                <td>@post.content</td>
+                <td>
+                    <button form="form-group" formmethod="get" formaction="@routes.PostCtrl.edit(group.id, post.id)" type="submit" class="btn btn-sm btn-default" >edit</button>
+                    <button form="form-group" formmethod="post" formaction="@routes.PostCtrl.destroy(group.id, post.id)" type="submit" class="btn btn-sm btn-default" onclick="return confirm('Are you sure?')" >delete</button>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
